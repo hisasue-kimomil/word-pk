@@ -1,0 +1,553 @@
+@charset "UTF-8";
+/* ドット文字（DotGothic16）と、読みやすいゴシック体（Noto Sans JP）。どちらも Google Fonts。課題3で Noto Sans JP を追加 */
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@400;700&display=swap");
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: normal;
+}
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: bottom;
+    background: transparent;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix:before {
+    　　　　content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+.wrapper {
+  max-width: 560px;
+  margin: auto;
+  padding: 80px;
+}
+.heading-title {
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+.result {
+  margin-bottom: 40px;
+}
+
+.result-img {
+  width: 160px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ============================================================
+   ここから下は、リッチ版（課題2）で Claude が用意した見た目です
+   ブロック調のドット絵に合わせ、文字もドット文字にしています
+   ============================================================ */
+
+body {
+  font-family: "DotGothic16", sans-serif;
+  background-color: #2b2f33;
+}
+
+/* 画面全体の箱（勝ち負けで JavaScript から色を変える） */
+.wrapper {
+  max-width: 440px;
+  padding: 32px 24px 40px;
+  background-color: #f4efe1;
+  border: 4px solid #1f2a30;
+  margin-top: 24px;
+}
+
+.heading-title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  letter-spacing: 4px;
+  text-shadow: 3px 3px 0 #c9c1a8;
+}
+
+/* 5本のマーク */
+.marks {
+  margin-bottom: 8px;
+}
+
+.marks img {
+  width: 36px;
+  margin: 0 3px;
+}
+
+/* ゴールの絵の区画。大きさを 400×280 に広げた */
+.field {
+  position: relative;
+  width: 400px;
+  height: 280px;
+  margin: 12px auto;
+  background-image: url(../images/field.svg);
+  border: 4px solid #1f2a30;
+  overflow: hidden;
+}
+
+/* 観客（上のはし） */
+.crowd {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+}
+
+/* キーパー（区画いっぱいに重ねる絵） */
+.keeper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+}
+
+/* ボール（キーパーより手前に出る） */
+.ball {
+  position: absolute;
+  width: 32px;
+  left: 184px;
+  top: 236px;
+}
+
+/* 漫画風の文字（効果音と歓声） */
+.sfx-shot,
+.sfx,
+.kansei {
+  position: absolute;
+  display: none;
+  white-space: nowrap;
+  -webkit-text-stroke: 2px #1f2a30;
+  paint-order: stroke fill;
+  text-shadow: 4px 4px 0 #1f2a30;
+  pointer-events: none;
+}
+
+/* 蹴った瞬間の音（ボールの横） */
+.sfx-shot {
+  left: 230px;
+  top: 222px;
+  font-size: 26px;
+  color: #ffffff;
+  transform: rotate(-8deg);
+}
+
+/* 結果の音（ゴールの真ん中に大きく） */
+.sfx {
+  left: 0;
+  width: 400px;
+  top: 100px;
+  text-align: center;
+  font-size: 48px;
+  color: #ffd23f;
+  transform: rotate(-6deg);
+}
+
+/* 観客の声（上のはし） */
+.kansei {
+  left: 0;
+  width: 400px;
+  top: 16px;
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* 何通り目のシュートか */
+.ban-text {
+  font-size: 13px;
+  color: #5b6b75;
+}
+
+/* 蹴った方向・本数・結果の文字 */
+.kick-text {
+  font-size: 20px;
+}
+
+.score-text {
+  margin: 4px auto 0;
+  padding: 6px 12px;
+  border: 3px solid transparent;
+  font-size: 18px;
+}
+
+.result {
+  margin-bottom: 16px;
+}
+
+.result-text {
+  font-size: 20px;
+}
+
+/* 名言（勝ち負けが決まったときに出す） */
+.meigen {
+  display: none;
+  margin: 0 auto 16px;
+  padding: 10px 14px;
+  border: 3px solid #1f2a30;
+  background-color: #ffffff;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* 方向のボタン（ブロックのような四角いボタン） */
+.button-area button {
+  margin: 4px;
+  padding: 10px 14px;
+  border: 3px solid #1f2a30;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 0 #1f2a30;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-area button:hover {
+  background-color: #fff3c4;
+}
+
+.button-area button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.button-area .reset-button {
+  background-color: #1f2a30;
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   ここから下は、課題3（ワードPK）で Claude が用意した見た目です
+   ゲームはドット文字のまま、言葉の入力・一覧・カードの言葉は
+   読みやすいゴシック体（Noto Sans JP）にしています
+   文字は全体に大きめにしました
+   ============================================================ */
+
+/* 画面全体の箱を少し広げる（言葉の一覧が入るように） */
+.wrapper {
+  max-width: 560px;
+}
+
+.heading-title {
+  font-size: 36px;
+}
+
+/* 文字の大きさ（リッチ版より大きく） */
+.ban-text {
+  font-size: 18px;
+}
+
+.kick-text {
+  font-size: 24px;
+}
+
+.score-text {
+  font-size: 24px;
+}
+
+.result-text {
+  font-size: 24px;
+}
+
+.button-area button {
+  font-size: 20px;
+}
+
+/* 読みやすいゴシック体を使う所 */
+.gothic,
+.word-list,
+.word-list input,
+.kotoba {
+  font-family: "Noto Sans JP", "メイリオ", Meiryo, sans-serif;
+}
+
+/* 区画の見出し（言葉の準備・カード） */
+.area-title {
+  margin: 20px 0 8px;
+  padding-left: 10px;
+  border-left: 6px solid #1f2a30;
+  font-size: 22px;
+}
+
+.area-note {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #5b6b75;
+}
+
+/* 言葉の一覧（自分の言葉10行・思想家の言葉10行） */
+.word-list {
+  margin-bottom: 12px;
+  border: 3px solid #1f2a30;
+  background-color: #ffffff;
+}
+
+.word-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-bottom: 1px dotted #c9c1a8;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.word-list li:last-child {
+  border-bottom: none;
+}
+
+/* チェックの四角を大きく */
+.word-list input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* 自分の言葉を書く欄 */
+.word-list input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 2px solid #c9c1a8;
+  font-size: 20px;
+}
+
+.word-list input[type="text"]:focus {
+  outline: none;
+  border-color: #1f2a30;
+}
+
+/* 人物の名前（思想家の言葉の後ろ） */
+.hito {
+  font-size: 16px;
+  color: #5b6b75;
+}
+
+/* 選んだ数・注意の文字 */
+.kazu-text {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+/* 3枚のカード（裏向き） */
+.card-area {
+  display: none;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 20px;
+}
+
+.cards img {
+  width: 120px;
+  cursor: pointer;
+}
+
+.cards img:hover {
+  transform: translateY(-6px);
+}
+
+/* 試合の区画（カードを選ぶまで隠す） */
+.game-area {
+  display: none;
+}
+
+/* かけた言葉（勝ったときに表に返して出す） */
+.kotoba {
+  display: none;
+  margin: 0 auto 16px;
+  padding: 20px 18px;
+  border: 4px solid #1f2a30;
+  box-shadow: 6px 6px 0 #1f2a30;
+  background-color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.kotoba .hito {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* 押せないように隠しておくボタン（.click() で呼ぶ用） */
+.kick,
+.card-kettei {
+  display: none;
+}
+
+/* 方向のボタンを、ゴールの形（上の段・真ん中・下の段）に並べる */
+.houkou {
+  width: 300px;
+  margin: 0 auto 8px;
+}
+
+.houkou-dan {
+  display: flex;
+  justify-content: space-between;
+}
+
+.houkou-dan.naka {
+  justify-content: center;
+}

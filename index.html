@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ワードPK</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1 class="heading-title">ワードPK</h1>
+    <p class="kotoba"></p>
+    <!-- ① 言葉の準備の区画 -->
+    <div class="junbi-area">
+      <h2 class="area-title">自分の言葉</h2>
+      <p class="area-note gothic">10個まで書けます。勝ったときに出したい言葉に、チェックを付けます（いくつでも）</p>
+      <ul class="word-list my-list"></ul>
+      <h2 class="area-title">思想家の言葉</h2>
+      <ul class="word-list junbi-list"></ul>
+      <p class="kazu-text gothic">出したい言葉にチェックを付けてください</p>
+      <div class="button-area text-center">
+        <button class="save-button">保存する</button>
+        <button class="start-button">試合へ</button>
+      </div>
+    </div>
+    <!-- ③ 試合の区画 -->
+    <div class="game-area">
+      <div class="marks text-center">
+        <img class="mark1" src="images/mark_next.svg" alt="1本目" />
+        <img class="mark2" src="images/mark_mada.svg" alt="2本目" />
+        <img class="mark3" src="images/mark_mada.svg" alt="3本目" />
+        <img class="mark4" src="images/mark_mada.svg" alt="4本目" />
+        <img class="mark5" src="images/mark_mada.svg" alt="5本目" />
+      </div>
+      <div class="kick-text text-center">ワードPK スタート！</div>
+      <div class="score-text text-center">5本中3本決めたら勝利</div>
+      <div class="field">
+        <img class="crowd" src="images/crowd.svg" alt="観客" />
+        <p class="kansei"></p>
+        <img class="keeper" src="images/keeper.svg" alt="キーパー" />
+        <img class="ball" src="images/ball.svg" alt="ボール" />
+        <p class="sfx-shot">ドゴォッ！！</p>
+        <p class="sfx"></p>
+      </div>
+      <div class="result text-center">
+        <p class="result-text">蹴る方向を選んでください</p>
+      </div>
+
+      <div class="button-area text-center">
+        <!-- 方向のボタン：ゴールの形（上の段・真ん中・下の段）に並べる -->
+        <div class="houkou">
+          <div class="houkou-dan">
+            <button class="hidariue-button">左上</button>
+            <button class="migiue-button">右上</button>
+          </div>
+          <div class="houkou-dan naka">
+            <button class="mannaka-button">真ん中</button>
+          </div>
+          <div class="houkou-dan">
+            <button class="hidarishita-button">左下</button>
+            <button class="migishita-button">右下</button>
+          </div>
+        </div>
+        <button class="reset-button">もう一回</button>
+        <button class="kaeru-button">言葉を入れ替える</button>
+        <button class="kick">蹴る</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
